@@ -2070,6 +2070,7 @@
                 flex-direction: row !important;
                 align-items: center !important;
                 gap: 20px !important;
+                margin-left: 20%;
             }
 
             .footer-mobile-app-wrapper .app-btn-img {
@@ -3199,3 +3200,4 @@
         .force-mobile .client-info img {
             width: 48px !important;
             height: 48px !important;
+        }
