@@ -1,0 +1,22 @@
+# Exclude large binaries, PDFs, and draft zip files
+*.zip
+*.pdf
+
+# Ignore root-level screenshot files used for layout verification
+*.png
+*.jpg
+*.svg
+
+# Do NOT ignore the final deliverables folder
+!final/
+!final/css/
+!final/js/
+!final/assets/
+
+# Explicitly ensure final assets are tracked
+!final/assets/*.png
+!final/assets/*.jpg
+!final/assets/*.svg
+!final/js/jquery.min.js
+!final/js/script.js
+!final/css/style.css

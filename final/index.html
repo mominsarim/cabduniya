@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cabduniya - Taxi Booking Hub</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+        <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <script>
+        // Preview helper: append ?mobilePreview=1 to the URL to force mobile layout for quick checks
+        try {
+            if (window.location.search && window.location.search.indexOf('mobilePreview=1') !== -1) {
+                document.documentElement.classList.add('force-mobile');
+                document.body.classList.add('force-mobile');
+            }
+        } catch (e) { /* ignore in static preview */ }
+    </script>
+
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg border-bottom sticky-top">
+        <div class="container d-flex align-items-center">
+            <button class="mobile-menu-btn d-lg-none me-1" type="button" id="mobileMenuToggleBtn"
+                aria-label="Toggle navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <a class="navbar-brand" href="#">
+                <img src="assets/Logo.png" alt="Cabduniya Logo">
+            </a>
+
+            <div class="search-nav d-none d-md-flex">
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-geo-alt"></i></span>
+                    <input type="text" class="form-control" placeholder="Search city, airport, hotel...">
+                </div>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-signpost-split"></i></span>
+                    <input type="text" class="form-control" placeholder="Search outstation routes">
+                    <button class="btn btn-search-icon"><i class="bi bi-search"></i></button>
+                </div>
+            </div>
+
+            <div class="d-flex align-items-center gap-3 ms-auto">
+                <a href="#" class="btn btn-black d-none d-sm-block">List Your Business <span
+                        class="text-warning">FREE</span></a>
+                <a href="#" class="user-icon-btn"><i class="bi bi-person"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Custom Mobile Dropdown Menu -->
+    <div class="mobile-dropdown-menu d-lg-none" id="mobileDropdownMenu">
+        <div class="mobile-search-wrapper mb-3">
+            <div class="input-group mb-2 custom-mobile-input">
+                <span class="input-group-text"><i class="bi bi-geo-alt-fill text-warning"
+                        style="color: #febb1b !important;"></i></span>
+                <input type="text" class="form-control" placeholder="Search city, airport, hotel...">
+            </div>
+            <div class="input-group mb-2 custom-mobile-input">
+                <span class="input-group-text"><i class="bi bi-signpost-split-fill text-dark"></i></span>
+                <input type="text" class="form-control" placeholder="Search outstation routes">
+            </div>
+            <button class="btn btn-warning w-100 fw-bold search-now-btn" type="button"
+                style="background-color: #febb1b; border: none; color: #fff; padding: 12px; border-radius: 8px;">
+                SEARCH NOW <i class="bi bi-search ms-1" style="font-size: 14px;"></i>
+            </button>
+        </div>
+        <div class="mobile-actions-wrapper d-grid gap-2">
+            <a href="#" class="btn btn-black py-2.5 fw-bold text-center"
+                style="background-color: #111; color: #fff; border-radius: 8px; font-size: 15px; padding: 12px;">
+                List Your Business <span class="text-warning" style="color: #febb1b !important;">FREE</span>
+            </a>
+            <a href="#" class="btn btn-light py-2.5 fw-bold text-center border vendor-login-btn"
+                style="background-color: #fff; color: #111; border: 1px solid #ddd !important; border-radius: 8px; font-size: 15px; padding: 12px; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                <i class="bi bi-person" style="font-size: 18px;"></i> Login as Vendor
+            </a>
+        </div>
+    </div>
+
+    <!-- Mobile Menu Backdrop -->
+    <div class="mobile-menu-backdrop d-lg-none" id="mobileMenuBackdrop"></div>
+
+    <!-- Hero -->
+    <section class="hero position-relative overflow-hidden">
+        <img src="assets/circle-dots of hero section.png" class="hero-bg-pattern" alt="">
+        <div class="container position-relative z-1">
+            <div class="row align-items-center">
+                <div class="col-lg-7">
+                    <div class="badge-sub mb-2">INDIA'S MOST TRUSTED</div>
+                    <h1 class="hero-title">
+                        <span class="hero-line-small">World's <span class="text-primary-custom">#1</span></span>
+                        <span class="hero-line-big"><span class="text-primary-custom">Taxi</span> <span
+                                class="hero-line-rest">Booking Hub</span></span>
+                    </h1>
+                    <p class="desc">Reliable rides. Verified drivers. Transparent fares. Anywhere you go.</p>
+
+                    <div class="stats-row">
+                        <div class="stat-item">
+                            <i class="bi bi-star stat-icon"></i>
+                            <div class="stat-text">
+                                <div class="stat-val">4.8/5</div>
+                                <div class="stat-lbl">Customer Rating</div>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <i class="bi bi-people stat-icon"></i>
+                            <div class="stat-text">
+                                <div class="stat-val">25,000+</div>
+                                <div class="stat-lbl">Happy Customers</div>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <i class="bi bi-geo-alt stat-icon"></i>
+                            <div class="stat-text">
+                                <div class="stat-val">50+</div>
+                                <div class="stat-lbl">Cities Covered</div>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <i class="bi bi-shield-check stat-icon"></i>
+                            <div class="stat-text">
+                                <div class="stat-val">100%</div>
+                                <div class="stat-lbl">Verified Drivers</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="search-box-hero">
+                        <div class="search-input-group">
+                            <div class="search-line"></div>
+                            <div class="search-input-wrapper">
+                                <i class="bi bi-circle"></i>
+                                <input type="text" placeholder="Search area, city, state">
+                                <i class="bi bi-crosshair text-primary-custom ms-auto" style="font-size: 18px;"></i>
+                            </div>
+                            <div class="search-input-wrapper-combined">
+                                <i class="bi bi-square"></i>
+                                <input type="text" placeholder="Search taxi, service, keyword">
+                                <button class="btn-search-hero-combined">SEARCH NOW <i
+                                        class="bi bi-search"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hero-features-bottom">
+                        <span><i class="bi bi-eye-slash"></i> No Hidden Charges</span>
+                        <span><i class="bi bi-headset"></i> 24x7 Customer Support</span>
+                        <span><i class="bi bi-shield-check"></i> Secure Payments</span>
+                        <span><i class="bi bi-bank"></i> Free Cancellation</span>
+                    </div>
+                </div>
+                <div class="col-lg-5 text-center hero-img-container">
+                    <img src="assets/Hero Section image.png" alt="Hero Character and Taxi">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium Services -->
+    <section class="premium-section">
+        <div class="container">
+            <h2 class="section-title">Our Premium Services</h2>
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="service-card">
+                        <img src="assets/Our Premium Service Section - 1st Image.png" alt="Corporate Taxi"
+                            class="service-card-img">
+                        <div class="service-card-body">
+                            <h4>Corporate Taxi Service</h4>
+                            <p>Professional corporate taxi solutions designed for seamless business travel, employee
+                                mobility, and executive transportation with dedicated support, monthly billing, and
+                                priority ride availability.</p>
+                            <div class="service-features-grid">
+                                <span><i class="bi bi-star-fill"></i> Business Travel</span>
+                                <span><i class="bi bi-star-fill"></i> Dedicated Support</span>
+                                <span><i class="bi bi-star-fill"></i> Monthly Billing</span>
+                                <span><i class="bi bi-star-fill"></i> Priority Rides</span>
+                            </div>
+                            <button class="btn btn-check-fare">CHECK FARE &rarr;</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="service-card">
+                        <img src="assets/Our Premium Service Section - 1st Image.png" alt="Employee Transport"
+                            class="service-card-img">
+                        <div class="service-card-body">
+                            <h4>Employee Transportation Service</h4>
+                            <p>Reliable employee transportation solutions for daily office commutes with punctual
+                                pickups, verified drivers, and safe PAN India cab services tailored for businesses of
+                                every size.</p>
+                            <div class="service-features-grid">
+                                <span><i class="bi bi-star-fill"></i> Daily Commute</span>
+                                <span><i class="bi bi-star-fill"></i> On-Time Guarantee</span>
+                                <span><i class="bi bi-star-fill"></i> Safe & Reliable</span>
+                                <span><i class="bi bi-star-fill"></i> PAN India Service</span>
+                            </div>
+                            <button class="btn btn-check-fare">CHECK FARE &rarr;</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="service-card">
+                        <img src="assets/Our Premium Service Section - 4th Image.png" alt="Outstation Taxi"
+                            class="service-card-img">
+                        <div class="service-card-body">
+                            <h4>Outstation Taxi Service</h4>
+                            <p>Comfortable outstation taxi services for one-way and round trips with experienced
+                                drivers, all-inclusive pricing, and reliable rides designed for stress-free
+                                long-distance travel.</p>
+                            <div class="service-features-grid">
+                                <span><i class="bi bi-star-fill"></i> One-Way & Round Trip</span>
+                                <span><i class="bi bi-star-fill"></i> Flexible Stops</span>
+                                <span><i class="bi bi-star-fill"></i> Experienced Drivers</span>
+                                <span><i class="bi bi-star-fill"></i> Best Price</span>
+                            </div>
+                            <button class="btn btn-check-fare">CHECK FARE &rarr;</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="service-card">
+                        <img src="assets/Our Premium Service Section - 4th Image.png" alt="Local Taxi"
+                            class="service-card-img">
+                        <div class="service-card-body">
+                            <h4>Local & One-Way Taxi Service</h4>
+                            <p>Affordable local and one-way taxi services with flexible stops, multiple cab options, and
+                                transparent pricing — so you only pay for the distance you travel.</p>
+                            <div class="service-features-grid">
+                                <span><i class="bi bi-star-fill"></i> No Return Fare</span>
+                                <span><i class="bi bi-star-fill"></i> Flexible Stops</span>
+                                <span><i class="bi bi-star-fill"></i> Experienced Drivers</span>
+                                <span><i class="bi bi-star-fill"></i> Best Price</span>
+                            </div>
+                            <button class="btn btn-check-fare">CHECK FARE &rarr;</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Strip -->
+    <div class="features-strip">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="feat-item">
+                        <img src="assets/Clean & Hygene.svg" alt="Clean & Hygene">
+                        <div>
+                            <h6>Clean & Hygienic</h6>
+                            <p>Every cab is cleaned and sanitized for your safety and comfort.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="feat-item">
+                        <img src="assets/Wide range of vehicles.svg" alt="Wide range of vehicles">
+                        <div>
+                            <h6>Wide Range of Vehicles</h6>
+                            <p>From hatchbacks to SUVs, choose the perfect ride for your needs.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="feat-item">
+                        <img src="assets/Verified & Trusted Drivers.svg" alt="Verified & Trusted Drivers">
+                        <div>
+                            <h6>Verified & Trusted Drivers</h6>
+                            <p>All our drivers are KYC verified, trained, and committed to your safety.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="feat-item">
+                        <img src="assets/Transparent Pricing.svg" alt="Transparent Pricing">
+                        <div>
+                            <h6>Transparent Pricing</h6>
+                            <p>Know your fare upfront with no hidden charges or surprises.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Popular Cities & Vendors -->
+    <section class="cities-vendors-section">
+        <div class="container">
+            <h3 class="text-center fw-bold mb-4">Our Services in Popular cities</h3>
+            <div class="city-pills">
+                <button class="btn">Agra</button>
+                <button class="btn">Bahadurgarh</button>
+                <button class="btn">Chandigarh</button>
+                <button class="btn">Delhi</button>
+                <button class="btn">Gurgaon</button>
+                <button class="btn">Jaipur</button>
+                <button class="btn">Nainital</button>
+                <button class="btn">Rohtak</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="vendors-search-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="search-vendors-box">
+                        <h2>Search <span>Vendors</span></h2>
+                        <p>Search from thousands of verified travel vendors across India and discover trusted cab
+                            partners for local rides, corporate travel, airport transfers, and outstation journeys — all
+                            in one place.</p>
+
+                        <div class="vendor-search-input">
+                            <input type="text" placeholder="Select the Best Vendor's from your city">
+                            <button>SEARCH NOW <i class="bi bi-search ms-1"></i></button>
+                        </div>
+
+                        <div class="vendor-stats">
+                            <div class="v-stat">
+                                <i class="bi bi-star"></i>
+                                <div class="v-stat-text">Verified<br>Vendors</div>
+                            </div>
+                            <div class="v-stat">
+                                <i class="bi bi-geo-alt"></i>
+                                <div class="v-stat-text">PAN India<br>Network</div>
+                            </div>
+                            <div class="v-stat">
+                                <i class="bi bi-people"></i>
+                                <div class="v-stat-text">Large Pool of<br>Trusted Partners</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mt-4 mt-lg-0 text-center">
+                    <div class="vendor-map-container">
+                        <img src="assets/Search Vendors Section.png" alt="Map and Taxis" class="img-fluid">
+                        <div class="mobile-only-stats">
+                            <div class="v-stat stat-verified">
+                                <div class="v-stat-icon-wrap"><i class="bi bi-star-fill"></i></div>
+                                <div class="v-stat-text">Verified<br>Vendors</div>
+                            </div>
+                            <div class="v-stat stat-pan">
+                                <div class="v-stat-icon-wrap"><i class="bi bi-geo-alt-fill"></i></div>
+                                <div class="v-stat-text">PAN India<br>Network</div>
+                            </div>
+                            <div class="v-stat stat-partners">
+                                <div class="v-stat-icon-wrap"><i class="bi bi-people-fill"></i></div>
+                                <div class="v-stat-text">Large Pool of<br>Trusted Partners</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Section -->
+    <section class="why-choose-section">
+        <div class="container">
+            <div class="why-banner">
+                <div class="why-content">
+                    <h3>Why Choose <span>CabDunia?</span></h3>
+                    <p>We go the extra mile to make every journey safe, smooth & memorable.</p>
+                    <div class="why-grid">
+                        <span><img src="assets/Why Choose CabDuniya Section Correct mark.svg" alt=""> Best Price
+                            Guarantee</span>
+                        <span><img src="assets/Why Choose CabDuniya Section Correct mark.svg" alt=""> Easy Bookings &
+                            Cancellations</span>
+                        <span><img src="assets/Why Choose CabDuniya Section Correct mark.svg" alt=""> Live Trip Tracking</span>
+                        <span><img src="assets/Why Choose CabDuniya Section Correct mark.svg" alt=""> 24x7 Customer
+                            Support</span>
+                        <span><img src="assets/Why Choose CabDuniya Section Correct mark.svg" alt=""> On-Time Pickup &
+                            Drop</span>
+                        <span><img src="assets/Why Choose CabDuniya Section Correct mark.svg" alt=""> Multiple Payment
+                            Options</span>
+                    </div>
+                </div>
+                <img src="assets/Why Choose CabDuniya Section.png" alt="Taxi on curved road" class="why-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2>How Cabduniya woks</h2>
+            <p class="sub">Book your ride in 3 simple steps</p>
+
+            <div class="steps-container">
+                <div class="step-dash"></div>
+                <div class="step-item">
+                    <div class="step-icon"><i class="bi bi-stars"></i></div>
+                    <div class="step-text">
+                        <h5>Enter Your Details</h5>
+                        <p>Fill in pickup, drop & date to get started</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-icon"><i class="bi bi-stars"></i></div>
+                    <div class="step-text">
+                        <h5>Get Best Options</h5>
+                        <p>Compare prices and choose your preferred ride</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-icon"><i class="bi bi-cash-coin"></i></div>
+                    <div class="step-text">
+                        <h5>Confirm & Enjoy</h5>
+                        <p>Book securely and enjoy a comfortable journey</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Ready -->
+    <section class="cta-ready">
+        <div class="cta-ready-container">
+            <div class="cta-ready-box">
+                <div class="cta-ready-content">
+                    <h2>Ready to Book Your Ride?</h2>
+                    <p>Get instant fares, 100% safe rides and excellent support.</p>
+                    <div>
+                        <button class="btn-green">Connect With Us</button>
+                    </div>
+                    <div>
+                        <button class="btn-outline-yellow">Find A Vendor <i class="bi bi-search ms-1"></i></button>
+                    </div>
+                    <span class="avail-text">*Available 24x7</span>
+                </div>
+                <img src="assets/Ready to book you ride section.png" alt="Yellow Taxi Banner" class="cta-ready-img"
+                    style="pointer-events: none;">
+            </div>
+        </div>
+    </section>
+
+    <!-- Enquiry -->
+    <section class="top-services-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h2>Get the List of <span>Top Taxi Services</span></h2>
+                    <p>We'll send you contact details in seconds for free<br>What Type of Taxi Services Do You Need?</p>
+
+                    <div class="enquiry-form">
+                        <p id="pMsg" class="enquiry-message"></p>
+                        <ul class="nav nav-tabs enquiry-tabs" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="local-tab" data-bs-toggle="tab"
+                                    data-bs-target="#tabOne" type="button" role="tab" aria-controls="tabOne"
+                                    aria-selected="true">Local</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="outstation-tab" data-bs-toggle="tab"
+                                    data-bs-target="#tabTwo" type="button" role="tab" aria-controls="tabTwo"
+                                    aria-selected="false">Outstation</button>
+                            </li>
+                        </ul>
+                        <form class="formBox" id="enquiryForm">
+                            <div class="tab-content">
+                                <div class="tab-pane fade show active enquiry-pane" id="tabOne" role="tabpanel"
+                                    aria-labelledby="local-tab">
+                                    <label class="form-label">Name</label>
+                                    <input type="text" class="enq-input" id="txtNameL" placeholder="Name" required>
+
+                                    <label class="form-label">Email Address</label>
+                                    <input type="email" class="enq-input" id="txtEmailL" placeholder="Email Address"
+                                        required>
+
+                                    <label class="form-label">Mobile</label>
+                                    <input type="text" class="enq-input" id="txtMobileL" placeholder="Mobile" required
+                                        maxlength="10">
+
+                                    <label class="form-label">Message</label>
+                                    <textarea class="enq-textarea" id="txtMessageL" placeholder="Message"
+                                        rows="3"></textarea>
+
+                                    <button type="button" id="btnLocal" class="btn-enquiry">Enquiry</button>
+                                </div>
+                                <div class="tab-pane fade enquiry-pane" id="tabTwo" role="tabpanel"
+                                    aria-labelledby="outstation-tab">
+                                    <label class="form-label">Name</label>
+                                    <input type="text" class="enq-input" id="txtNameO" placeholder="Name" required>
+
+                                    <label class="form-label">Email Address</label>
+                                    <input type="email" class="enq-input" id="txtEmailO" placeholder="Email Address"
+                                        required>
+
+                                    <label class="form-label">Mobile</label>
+                                    <input type="text" class="enq-input" id="txtMobileO" placeholder="Mobile" required
+                                        maxlength="10">
+
+                                    <label class="form-label">Message</label>
+                                    <textarea class="enq-textarea" id="txtMessageO" placeholder="Message"
+                                        rows="3"></textarea>
+
+                                    <button type="button" id="btnOutStation" class="btn-enquiry">Enquiry</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-6 mt-5 mt-lg-0 text-center">
+                    <img src="assets/Enquiry Form Section.png" alt="Driver Opening Door" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packages -->
+    <section class="packages-section">
+        <div class="container">
+            <div class="packages-header">
+                <h2>Cabduniya Tours & Packages</h2>
+                <p>Explore the world with our exclusive tours & package hassle-free and unforgettable!</p>
+            </div>
+            <div class="pkg-tabs">
+                <span>East India</span>
+                <span>West India</span>
+                <span class="active">North India</span>
+                <span>South India</span>
+            </div>
+
+            <div class="city-pills mb-5">
+                <button class="btn">Agra</button>
+                <button class="btn">Bahadurgarh</button>
+                <button class="btn">Chandigarh</button>
+                <button class="btn">Delhi</button>
+                <button class="btn">Gurgaon</button>
+                <button class="btn">Jaipur</button>
+                <button class="btn">Nainital</button>
+                <button class="btn">Rohtak</button>
+            </div>
+
+            <div class="slider-nav-container">
+                <button class="slider-nav-btn btn-outline btn-city-prev" aria-label="Previous Cities"><i
+                        class="bi bi-arrow-left"></i></button>
+                <button class="slider-nav-btn btn-filled btn-city-next" aria-label="Next Cities"><i
+                        class="bi bi-arrow-right"></i></button>
+            </div>
+
+            <h3 class="fw-bold mb-4">Most Wanted Packages</h3>
+            <div class="pkg-grid">
+                <div>
+                    <div class="pkg-card">
+                        <div class="pkg-img-wrap">
+                            <img src="assets/Listing image of Most Wanted Package Section.jpg" alt="Jaipur Palace">
+                            <div class="pkg-badge">4 Night / 5 Days</div>
+                        </div>
+                        <div class="pkg-body">
+                            <h5>Jaipur Extended<br>4N/5D Tour</h5>
+                            <div class="pkg-features">
+                                <span><i class="bi bi-building"></i> 5</span>
+                                <span><i class="bi bi-geo-alt"></i> Sightseeing</span>
+                                <span><i class="bi bi-cup-hot"></i> Meals</span>
+                                <span><i class="bi bi-car-front"></i> Cab</span>
+                            </div>
+                            <div class="pkg-price-row">
+                                <div class="price-info">
+                                    <span class="price-lbl">Starting From</span>
+                                    <span class="strike">Rs. 18500</span>
+                                    <span class="actual">Rs. 16000*</span>
+                                    <span class="sub-text">per adult on twin sharing</span>
+                                </div>
+                                <button class="btn-get-offers">Get Offers</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="pkg-card">
+                        <div class="pkg-img-wrap">
+                            <img src="assets/Listing image of Most Wanted Package Section.jpg" alt="Jaipur Palace">
+                            <div class="pkg-badge">4 Night / 5 Days</div>
+                        </div>
+                        <div class="pkg-body">
+                            <h5>Jaipur Extended<br>4N/5D Tour</h5>
+                            <div class="pkg-features">
+                                <span><i class="bi bi-building"></i> 5</span>
+                                <span><i class="bi bi-geo-alt"></i> Sightseeing</span>
+                                <span><i class="bi bi-cup-hot"></i> Meals</span>
+                                <span><i class="bi bi-car-front"></i> Cab</span>
+                            </div>
+                            <div class="pkg-price-row">
+                                <div class="price-info">
+                                    <span class="price-lbl">Starting From</span>
+                                    <span class="strike">Rs. 18500</span>
+                                    <span class="actual">Rs. 16000*</span>
+                                    <span class="sub-text">per adult on twin sharing</span>
+                                </div>
+                                <button class="btn-get-offers">Get Offers</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="pkg-card">
+                        <div class="pkg-img-wrap">
+                            <img src="assets/Listing image of Most Wanted Package Section.jpg" alt="Jaipur Palace">
+                            <div class="pkg-badge">4 Night / 5 Days</div>
+                        </div>
+                        <div class="pkg-body">
+                            <h5>Jaipur Extended<br>4N/5D Tour</h5>
+                            <div class="pkg-features">
+                                <span><i class="bi bi-building"></i> 5</span>
+                                <span><i class="bi bi-geo-alt"></i> Sightseeing</span>
+                                <span><i class="bi bi-cup-hot"></i> Meals</span>
+                                <span><i class="bi bi-car-front"></i> Cab</span>
+                            </div>
+                            <div class="pkg-price-row">
+                                <div class="price-info">
+                                    <span class="price-lbl">Starting From</span>
+                                    <span class="strike">Rs. 18500</span>
+                                    <span class="actual">Rs. 16000*</span>
+                                    <span class="sub-text">per adult on twin sharing</span>
+                                </div>
+                                <button class="btn-get-offers">Get Offers</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="pkg-card">
+                        <div class="pkg-img-wrap">
+                            <img src="assets/Listing image of Most Wanted Package Section.jpg" alt="Jaipur Palace">
+                            <div class="pkg-badge">4 Night / 5 Days</div>
+                        </div>
+                        <div class="pkg-body">
+                            <h5>Jaipur Extended<br>4N/5D Tour</h5>
+                            <div class="pkg-features">
+                                <span><i class="bi bi-building"></i> 5</span>
+                                <span><i class="bi bi-geo-alt"></i> Sightseeing</span>
+                                <span><i class="bi bi-cup-hot"></i> Meals</span>
+                                <span><i class="bi bi-car-front"></i> Cab</span>
+                            </div>
+                            <div class="pkg-price-row">
+                                <div class="price-info">
+                                    <span class="price-lbl">Starting From</span>
+                                    <span class="strike">Rs. 18500</span>
+                                    <span class="actual">Rs. 16000*</span>
+                                    <span class="sub-text">per adult on twin sharing</span>
+                                </div>
+                                <button class="btn-get-offers">Get Offers</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="pkg-card">
+                        <div class="pkg-img-wrap">
+                            <img src="assets/Listing image of Most Wanted Package Section.jpg" alt="Jaipur Palace">
+                            <div class="pkg-badge">4 Night / 5 Days</div>
+                        </div>
+                        <div class="pkg-body">
+                            <h5>Jaipur Extended<br>4N/5D Tour</h5>
+                            <div class="pkg-features">
+                                <span><i class="bi bi-building"></i> 5</span>
+                                <span><i class="bi bi-geo-alt"></i> Sightseeing</span>
+                                <span><i class="bi bi-cup-hot"></i> Meals</span>
+                                <span><i class="bi bi-car-front"></i> Cab</span>
+                            </div>
+                            <div class="pkg-price-row">
+                                <div class="price-info">
+                                    <span class="price-lbl">Starting From</span>
+                                    <span class="strike">Rs. 18500</span>
+                                    <span class="actual">Rs. 16000*</span>
+                                    <span class="sub-text">per adult on twin sharing</span>
+                                </div>
+                                <button class="btn-get-offers">Get Offers</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Pagination Dots for Mobile Slider -->
+            <div class="pkg-dots d-flex d-md-none justify-content-center gap-2 mt-3">
+                <span class="active"></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="pkg-nav-arrows-container d-flex justify-content-center gap-3 mt-4 mb-2">
+                <button class="slider-nav-btn btn-outline btn-pkg-prev" aria-label="Previous Package"><i
+                        class="bi bi-arrow-left"></i></button>
+                <button class="slider-nav-btn btn-filled btn-pkg-next" aria-label="Next Package"><i
+                        class="bi bi-arrow-right"></i></button>
+            </div>
+            <!-- Empty state message -->
+            <div class="empty-packages-message text-center py-5 text-muted"
+                style="display: none; font-weight: 500; font-size: 14px;">
+                <i class="bi bi-info-circle mb-2" style="font-size: 24px; display: block; color: var(--primary);"></i>
+                No packages available for this region currently.
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial -->
+    <section class="testimonial-section">
+        <div class="container">
+            <div class="test-header">
+                <h2>What Our Customers Say</h2>
+                <div class="nav-arrows">
+                    <button class="btn-arrow"><i class="bi bi-arrow-left"></i></button>
+                    <button class="btn-arrow active"><i class="bi bi-arrow-right"></i></button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-10">
+                    <p class="test-text">"I was really impressed with the level of service I received from this Taxi
+                        Services company. The process was smooth and easy, and the car I rented was in excellent
+                        condition. The staff was friendly and helpful, and I felt well taken care of throughout my
+                        rental period. I would definitely recommend this company to anyone looking for a premium Taxi
+                        experience."</p>
+                    <div class="client-info">
+                        <img src="assets/Customer 1.png" alt="Lokman Hossain">
+                        <div>
+                            <h6>Lokman Hossain</h6>
+                            <span>From Texas</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Pre-strip -->
+    <div class="footer-pre-strip">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-3 col-6">
+                    <div class="feat-item-sm"><i class="bi bi-eye-slash"></i> No Hidden Charges</div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="feat-item-sm"><i class="bi bi-headset"></i> 24x7 Customer Support</div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="feat-item-sm"><i class="bi bi-shield-check"></i> Secure Payments</div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="feat-item-sm"><i class="bi bi-bank"></i> Free Cancellation</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-title footer-mobile-hide">POPULAR CITIES</div>
+            <div class="footer-lists footer-mobile-hide">
+                <a href="/taxi-services-in-jaipur">Jaipur</a><a href="/taxi-services-in-agra">Agra</a><a
+                    href="/taxi-services-in-delhi">Delhi</a><a href="/taxi-services-in-haridwar">Haridwar</a><a
+                    href="/taxi-services-in-bahadurgarh">Bahadurgarh</a><a
+                    href="/taxi-services-in-gurgaon">Gurgaon</a><a href="/taxi-services-in-rohtak">Rohtak</a><a
+                    href="/taxi-services-in-chandigarh">Chandigarh</a>
+            </div>
+
+            <div class="footer-title footer-mobile-hide">CAB FROM JAIPUR</div>
+            <div class="footer-lists footer-mobile-hide">
+                <a href="#">Jaipur to Ahmedabad Cab Services</a><a href="#">Jaipur to Gurgaon - Gurugram Cab
+                    Services</a><a href="#">Jaipur to Delhi Cab Services</a><a href="#">Jaipur to Agra Cab
+                    Services</a><a href="#">Jaipur to Jaisalmer Cab Services</a><a href="#">Jaipur to Mount Abu Cab
+                    Services</a>
+            </div>
+
+            <div class="row mt-5">
+                <!-- Brand Info -->
+                <div class="col-lg-3 col-12 footer-brand">
+                    <img src="assets/Footer Logo.png" alt="Cabduniya Logo" style="height: 35px;">
+                    <p>India's trusted taxi booking platform for outstation, local, and airport transfers. Reliable
+                        rides. Trusted by thousands.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-whatsapp"></i></a>
+                        <a href="#"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+
+                <!-- Divider 1 on Mobile -->
+                <div class="col-12 d-lg-none">
+                    <hr class="footer-divider">
+                </div>
+
+                <!-- Service Column -->
+                <div class="col-lg-2 col-6 footer-col footer-col-border-left">
+                    <h5>Service</h5>
+                    <ul>
+                        <li><a href="#">One Way Taxi</a></li>
+                        <li><a href="#">Round Trip Taxi</a></li>
+                        <li><a href="#">Outstation Taxi</a></li>
+                        <li><a href="#">Corporate Taxi</a></li>
+                        <li><a href="#">Airport Transfers</a></li>
+                        <li><a href="#">Local Taxi</a></li>
+                    </ul>
+                </div>
+
+                <!-- Top Cities Column -->
+                <div class="col-lg-2 col-6 footer-col footer-col-border-right">
+                    <h5>Top Cities</h5>
+                    <ul>
+                        <li><a href="/taxi-services-in-delhi">Delhi</a></li>
+                        <li><a href="#">Mumbai</a></li>
+                        <li><a href="#">Bangalore</a></li>
+                        <li><a href="#">Pune</a></li>
+                        <li><a href="#">Hyderabad</a></li>
+                        <li><a href="/taxi-services-in-chandigarh">Chandigarh</a></li>
+                        <li><a href="/taxi-services-in-agra">Agra</a></li>
+                        <li><a href="/taxi-services-in-gurgaon">Gurgaon</a></li>
+                        <li><a href="#">View All Cities</a></li>
+                    </ul>
+                </div>
+
+                <!-- Divider 2 on Mobile -->
+                <div class="col-12 d-lg-none">
+                    <hr class="footer-divider">
+                </div>
+
+                <!-- Company Column -->
+                <div class="col-lg col-6 footer-col">
+                    <h5>Company</h5>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Media Coverage</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">List Your Business</a></li>
+                    </ul>
+                </div>
+
+                <!-- Support Column -->
+                <div class="col-lg col-6 footer-col">
+                    <h5>Support</h5>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Cancellation Policy</a></li>
+                    </ul>
+                </div>
+
+                <!-- Download Vendor App Column (Desktop Only) -->
+                <div class="col-lg d-none d-lg-block footer-col footer-col-border-left footer-desktop-only">
+                    <h5 style="margin-bottom: 18px;">Download<br>Vendor App</h5>
+                    <div class="app-buttons">
+                        <a href="#"><img src="assets/Google Play Button Image.png" alt="Google Play" class="app-btn-img"></a>
+                        <a href="#"><img src="assets/App Store Button Image.png" alt="App Store" class="app-btn-img"></a>
+                    </div>
+                </div>
+
+                <!-- Divider 3 on Mobile -->
+                <div class="col-12 d-lg-none">
+                    <hr class="footer-divider">
+                </div>
+
+                <!-- Mobile App Download Block -->
+                <div class="col-12 d-block d-lg-none footer-col mt-4 footer-mobile-only">
+                    <div class="footer-mobile-app-wrapper">
+                        <div class="app-buttons">
+                            <a href="#"><img src="assets/Google Play Button Image.png" alt="Google Play"
+                                    class="app-btn-img"></a>
+                            <a href="#"><img src="assets/App Store Button Image.png" alt="App Store" class="app-btn-img"></a>
+                        </div>
+                        <h5 class="mobile-download-text">Download<br>Vendor App</h5>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Divider 4 on Mobile (before bottom links) -->
+            <hr class="footer-divider d-lg-none">
+
+            <div class="footer-bottom-links">
+                <div class="footer-bottom-left">2026 All rights reserved</div>
+                <div class="footer-bottom-right">
+                    <a href="#">Privacy policy</a>
+                    <a href="#">Terms of Use</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="branding-bar">
+            Development & Branding Partner :
+            <img src="assets/RBDigital Logo Footer Section.png" alt="RB DIGITAL COMPANY">
+            #BuildingdevelopedIndia
+        </div>
+    </footer>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
